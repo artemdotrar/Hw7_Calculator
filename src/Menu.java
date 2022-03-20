@@ -1,9 +1,6 @@
 import java.util.Scanner;
 
 public class Menu {
-    private int command;
-    private String fNumber;
-    private String sNumber;
     private boolean isWorking = true;
 
     public boolean isWorking() {
@@ -41,14 +38,6 @@ public class Menu {
             }
         } else {
             printError(1);
-        }
-    }
-
-    private boolean checkOperations(String operation) {
-        if (operation == "+" || operation == "-" || operation == "*" || operation == "/") {
-            return true;
-        } else {
-            return false;
         }
     }
 
