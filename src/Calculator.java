@@ -1,6 +1,7 @@
 public class Calculator implements CalculatorInterface {
     private double firstNumber;
     private double secondNumber;
+    public OperationList operationList = new OperationList();
 
     public void setFirstNumber(double firstNumber) {
         this.firstNumber = firstNumber;
@@ -12,16 +13,25 @@ public class Calculator implements CalculatorInterface {
 
     @Override
     public double action(int operationID) {
+        double result = 0;
         switch (operationID) {
             case 1:
-                return firstNumber + secondNumber;
+                result = firstNumber + secondNumber;
+                operationList.addLine(String.format("%.5f + %.5f = %.5f", firstNumber, secondNumber, result));
+                break;
             case 2:
-                return firstNumber - secondNumber;
+                result = firstNumber - secondNumber;
+                operationList.addLine(String.format("%.5f - %.5f = %.5f", firstNumber, secondNumber, result));
+                break;
             case 3:
-                return  firstNumber * secondNumber;
+                result = firstNumber * secondNumber;
+                operationList.addLine(String.format("%.5f * %.5f = %.5f", firstNumber, secondNumber, result));
+                break;
             case 4:
-                return  firstNumber / secondNumber;
+                result = firstNumber / secondNumber;
+                operationList.addLine(String.format("%.5f / %.5f = %.5f", firstNumber, secondNumber, result));
+                break;
         }
-        return 0;
+        return result;
     }
 }

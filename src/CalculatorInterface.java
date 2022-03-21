@@ -1,3 +1,3 @@
 public interface CalculatorInterface {
-    public double action(int operationID);
+    public double action (int operationID);
 }

@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Menu {
     private boolean isWorking = true;
+    public Calculator calc = new Calculator();
 
     public boolean isWorking() {
         return isWorking;
@@ -9,15 +10,16 @@ public class Menu {
 
     public void printMenu() {
         int point = 0;
-        System.out.println("\n1)Сложение\t2)Вычитание\t3)Умножение\t4)Деление\t5)Выход)");
+        System.out.println("\n1)Сложение\t2)Вычитание\t3)Умножение\t4)Деление\t5)Вывод истории операций\t6)Выход)");
 
         Scanner scanner = new Scanner(System.in);
         if (scanner.hasNextInt()) {
             point = scanner.nextInt();
-            if (point == 5) {
+            if (point == 6) {
                 isWorking = false;
+            } else if (point == 5) {
+                System.out.println(calc.operationList.getHistory());
             } else if (point > 0 && point < 5) {
-                Calculator calc = new Calculator();
                 System.out.print("Введите число 1: ");
                 if (scanner.hasNextDouble()) {
                     calc.setFirstNumber(scanner.nextDouble());
@@ -32,7 +34,8 @@ public class Menu {
                     printError(2);
                     return;
                 }
-                System.out.println(calc.action(point));
+                calc.action(point);
+                System.out.println(calc.operationList.getHistory());
             } else {
                 printError(1);
             }
@@ -50,5 +53,3 @@ public class Menu {
                 System.out.println("Некорректное значение");
         }
     }
-
-}
